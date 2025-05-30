@@ -15,7 +15,7 @@ class OpenWeatherAPI {
 
     var url =
         // "https://api.openweathermap.org/data/2.5/onecall?lat=$lat&lon=$lon&exclude={part}&appid=$apiKey";
-        "https://api.openweathermap.org/data/2.5/weather?lat=$lat&lon=$lon&appid=$apiKey";
+        "https://api.openweathermap.org/data/2.5/weather?units=metric&lat=$lat&lon=$lon&appid=$apiKey";
 
     var res = await http.get(Uri.parse(url));
 
@@ -23,5 +23,9 @@ class OpenWeatherAPI {
     print(res.body);
 
     return jsonDecode(res.body);
+  }
+
+  String getWeatherIcon(String icon) {
+    return "https://openweathermap.org/img/wn/$icon@4x.png";
   }
 }
